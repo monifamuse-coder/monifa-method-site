@@ -279,28 +279,77 @@ async function startSession() {
   showTyping();
 
   const systemPrompt = buildSystemPrompt();
-  const openingMsg = {
-    role: 'user',
-    content: `I just finished the lesson "${selectedModule.lesson}" in ${selectedModule.title}. I want to: ${selectedMode.prompt}`
+  // Smart module+mode specific openers — instant, no API call needed
+  const openers = {
+    apply: {
+      "winning-combination": "You've just worked through the Winning Combination — the framework for choosing what to sell before building anything. Before we apply it: what ideas are you sitting with right now? Even if they're vague or half-formed, tell me what's been circling your mind. What does your business do (or want to do)?",
+      "48-hour-launch": "You've got the 48-hour launch sequence now. Before we apply it, I need to understand where you're actually at. Do you have a product idea already, or are you still figuring out what to build? And what's been the thing stopping you from launching so far?",
+      "copy-ai-brand": "You've just built the foundation of your AI Brand Brain — which means the question now is: does it actually sound like you? Tell me about your business and share one example of content you've written (or struggled to write). We'll see how your Brand Brain stacks up.",
+      "ai-powered-business": "You've been through the AI audit framework. Here's the real question: what are you actually using AI for right now, and what are you still doing manually that's eating your time? Tell me about your business and let's find the highest-leverage automation first.",
+      "distribution": "You now know the difference between content and distribution. Let me ask you directly: where are you currently getting your customers from? And where are you spending most of your time trying to reach them? Tell me what your business does and we'll map your actual distribution picture.",
+      "digital-marketing": "You've just learned about the two lanes — demand capture vs demand creation. Tell me about your business and what you're currently doing to get customers. I want to diagnose which lane you're actually in (it's not always the one people think).",
+      "lead-generation": "The invisible funnel is only invisible if it's working — which means we need to see if yours is. Tell me about your business and what you're currently doing to get leads. Do you have a lead magnet? An email list? Or are you starting from scratch?",
+      "90-day-plan": "You've got the roadmap. Now let's make it yours. Tell me about your business and where you are right now — do you have an offer, a small audience, any existing customers? The visibility map looks different depending on your starting point.",
+      "ethical-selling": "You've got the CFO pricing framework and the introvert's sales conversation. Here's what I want to know: what do you currently charge, and how do you feel when someone asks about your price? Tell me about your offer and we'll work from there.",
+      "agentic-ai": "You've seen what AI agents can do. Now let's find where they'll make the biggest difference for YOU. Tell me about your business — what does a typical day look like, and what are the tasks you do over and over that feel like they should just... happen automatically?",
+      "faceless-course": "You've got the faceless course architecture. Tell me: what would your course be about, and who would it be for? Even if it's still rough, let's pressure-test the concept before you build anything."
+    },
+    review: {
+      "default": "Share what you've got. It can be rough — a draft, some notes, bullet points, a half-built page. I'll read it carefully and give you honest feedback on what's working and what needs work. Don't tidy it up first — I want to see the real version."
+    },
+    roleplay: {
+      "winning-combination": "Let's roleplay your product validation. I'll be a potential customer in your target market — you're about to ask me three questions to validate your product idea. Tell me what your idea is and who you think the customer is, then start the validation conversation. I'll respond as that customer would.",
+      "48-hour-launch": "Let's roleplay your launch day. I'll be someone in your warm audience — I've just seen your launch post and I'm curious but not quite convinced yet. Tell me what your product is, then send me the message you'd actually send to follow up with me.",
+      "copy-ai-brand": "Let's test your Brand Brain. Give me a task you'd normally use it for — writing a caption, a sales email, a landing page headline — and show me what it produced. I'll tell you whether it sounds like you or like a template.",
+      "ai-powered-business": "Let's roleplay an AI audit. Tell me about your business and I'll ask you about your current tools and tasks — one by one. By the end we'll have mapped exactly where AI should and shouldn't be in your workflow.",
+      "distribution": "Let's roleplay a distribution strategy session. Tell me about your business and your current reach, and I'll play the role of a distribution consultant asking you the questions that reveal your biggest gap.",
+      "digital-marketing": "Let's roleplay a content strategy review. I'll be a potential customer who found your content. Tell me what your business is and share a piece of content you've created — I'll respond as that customer would, including the objections they might have.",
+      "lead-generation": "Let's roleplay a cold audience interaction. I'll be someone who just found your lead magnet for the first time. Tell me what your lead magnet is and your business, then pitch it to me — I'll respond as a sceptical-but-interested stranger would.",
+      "90-day-plan": "Let's roleplay the first sales conversation in your 90-day plan. I'll be a potential first customer. Tell me who they are, then start the conversation bridge — reach out to me the way you'd actually do it.",
+      "ethical-selling": "Let's practise a sales conversation right now. I'm a potential customer — I like what you do, but when you told me the price I went quiet. Tell me your offer and your price, then start the conversation. Handle my hesitation.",
+      "agentic-ai": "Let's roleplay briefing your first AI agent. Tell me what task you want to automate, and I'll play the role of the AI agent — you give me the brief, I'll show you what I'd do with it, and we'll refine the instructions together.",
+      "faceless-course": "Let's roleplay your course pitch. I'm a potential student who just saw your course for the first time. Tell me what your course is about and who it's for, then pitch it to me. I'll respond as a real student would — curious, but with questions."
+    },
+    challenge: {
+      "winning-combination": "Here's my challenge to you on the Winning Combination: most people who go through this module come out with an idea they're excited about — but they skip the validation step because they're worried about what they'll find. Which of the three questions felt hardest to answer honestly? Let's start there.",
+      "48-hour-launch": "Here's my challenge: the 48-hour launch is designed to break the perfectionism pattern. But most people find at least one reason why their situation is different and it can't apply to them. What's your version of that reason? Tell me honestly.",
+      "copy-ai-brand": "Here's my challenge on the Brand Brain: AI copy often sounds like AI copy, even when people think it doesn't. Share something your Brand Brain produced and let me tell you honestly whether it sounds like you — or whether it sounds like everyone else.",
+      "ai-powered-business": "Here's my challenge: which lesson in the AI module did you find yourself most sceptical about? Not the tools — the underlying claim. Let's examine it.",
+      "digital-marketing": "Here's my challenge on the two lanes: most people who believe they're doing demand creation are actually doing neither. Which lane do you honestly think you're in — and what's your evidence? Don't tell me what you want to be doing. Tell me what you're actually doing.",
+      "lead-generation": "Here's my challenge on the invisible funnel: 'passive' lead generation isn't really passive — it requires a very active set-up phase that most people underinvest in. What's the part of the funnel you're most tempted to skip or shortcut? Let's talk about why.",
+      "90-day-plan": "Here's my challenge on the 90-day plan: the visibility map only works if you're honest about who your first 10 customers actually are — not who you wish they were. Have you named specific people? Or have you described a general audience? Tell me what you've got.",
+      "ethical-selling": "Here's my challenge on pricing: most people who undercharge don't believe they're undercharging. They believe their price is 'realistic' given their audience. Tell me your price and your reasoning — I want to test whether it's strategic or whether it's fear dressed up as strategy.",
+      "agentic-ai": "Here's my challenge on agentic AI: the 30-day sprint only works if the first workflow you build is genuinely useful — not just technically impressive. What's the workflow you're planning to start with, and how would you measure whether it's actually saved you time?",
+      "faceless-course": "Here's my challenge on faceless courses: the AI avatar is the easy part. The hard part is the curriculum — a course only sells if it gets a specific result for a specific person. Tell me your course idea and let's see whether the outcome is clear enough to be worth paying for."
+    }
   };
 
-  try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({system: systemPrompt, messages: [openingMsg]})
-    });
-    const data = await res.json();
-    const text = data.content?.find(c => c.type === 'text')?.text || "Let's get started. Tell me about your business — what do you do, and what are you working on right now?";
-    removeTyping();
-    messages = [{role:'user',content:openingMsg.content,hidden:true},{role:'assistant',content:text}];
-    appendMsg('assistant', text);
-  } catch(e) {
-    removeTyping();
-    const fallback = "Let's get started. Tell me about your business — what do you do, who do you serve, and what's on your mind right now?";
-    messages = [{role:'assistant',content:fallback}];
-    appendMsg('assistant', fallback);
+  // Get the right opener
+  const modeKey = selectedMode.id;
+  const moduleKey = selectedModule.id;
+  let openingText;
+  if (modeKey === 'apply' && openers.apply[moduleKey]) {
+    openingText = openers.apply[moduleKey];
+  } else if (modeKey === 'roleplay' && openers.roleplay[moduleKey]) {
+    openingText = openers.roleplay[moduleKey];
+  } else if (modeKey === 'challenge' && openers.challenge[moduleKey]) {
+    openingText = openers.challenge[moduleKey];
+  } else if (modeKey === 'review') {
+    openingText = openers.review.default;
+  } else {
+    openingText = `You've just completed ${selectedModule.lesson}. Before I help you, tell me: what's your business, and which part of this module felt most relevant (or most confusing) to you?`;
   }
+
+  // Opening message for conversation history
+  const openingUserMsg = {
+    role: 'user',
+    content: `I just completed the lesson "${selectedModule.lesson}" in the module "${selectedModule.title}". Mode: ${selectedMode.label}. ${selectedMode.prompt}`,
+    hidden: true
+  };
+
+  removeTyping();
+  messages = [openingUserMsg, {role:'assistant', content: openingText}];
+  appendMsg('assistant', openingText);
 
   isLoading = false;
   document.getElementById('chat-input').focus();
@@ -328,7 +377,7 @@ async function sendMessage() {
       body: JSON.stringify({system: buildSystemPrompt(), messages: apiMessages})
     });
     const data = await res.json();
-    const reply = data.content?.find(c => c.type === 'text')?.text || "Can you say a bit more? I want to make sure I give you something actually useful.";
+    const reply = data.reply || "Can you say a bit more? I want to make sure I give you something actually useful?";
     removeTyping();
     messages.push({role:'assistant',content:reply});
     appendMsg('assistant', reply);
