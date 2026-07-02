@@ -319,7 +319,7 @@ async function sendMessage() {
   document.getElementById('send-btn').disabled = true;
   showTyping();
 
-  const apiMessages = messages.filter(m => !m.hidden).map(m => ({role:m.role,content:m.content}));
+  const apiMessages = messages.filter(m => !m.hidden || m.role === 'user').map(m => ({role:m.role,content:m.content}));
 
   try {
     const res = await fetch('/api/chat', {
