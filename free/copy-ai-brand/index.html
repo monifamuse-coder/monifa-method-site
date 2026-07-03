@@ -90,8 +90,7 @@
 function go(e,form,url,okId){
   e.preventDefault();
   fetch(form.action,{method:"POST",body:new FormData(form),mode:"no-cors"}).catch(()=>{}).finally(()=>{
-    document.getElementById("fw").style.display="none";
-    document.getElementById(okId).style.display="block";
+    window.location.href = "/thank-you?video=https://youtu.be/mtpXip1O--o&module=Module+03%3A+Copy+AI+Brand+Brain";
   });
 }
 </script>
