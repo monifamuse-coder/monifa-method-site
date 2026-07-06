@@ -31,7 +31,7 @@ The distribution systems, digital marketing frameworks, and faceless lead genera
 Pricing like a CFO, the introvert's sales conversation, closing without scripts, and running ads without losing your soul. Two systems in one: Ethical Selling and the 48-Hour Launch Sprint.
 
 THE PAID SYSTEM:
-The Successful Woman's System costs £14.99 — all seven pillars, the inner work layer, companion workbooks, and Ask Muse. Checkout: https://monifamuse.com/shop/LaunchYourFirstDigitalProductin48Hours
+The Successful Woman's System costs £14.99 — all seven pillars, the inner work layer, companion workbooks, and Ask Muse. Checkout: https://academy.themonifamethod.com/payment?product_id=the-complete-digital-business-system&type=course
 
 FREE RESOURCES:
 - Identity Shift Workbook: monifamuse.com/shop/TheIdentityShiftWorkbook
