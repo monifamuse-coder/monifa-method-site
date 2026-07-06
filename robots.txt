@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /get-the-system
-Disallow: /downloads/
-
-Sitemap: https://themonifamethod.com/sitemap.xml
