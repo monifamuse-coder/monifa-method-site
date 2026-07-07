@@ -74,9 +74,10 @@
 <!-- ============ FLOATING ASK MUSE WIDGET ============ -->
 <style>
   .muse-fab{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
-  .muse-fab-btn{width:56px;height:56px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(184,148,58,0.4);display:flex;align-items:center;justify-content:center;transition:transform .15s ease;}
-  .muse-fab-btn:hover{transform:scale(1.08);}
-  .muse-fab-btn svg{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .muse-fab-btn{height:52px;padding:0 22px 0 16px;border-radius:30px;background:var(--gold);border:none;cursor:pointer;box-shadow:0 4px 20px rgba(184,148,58,0.45);display:flex;align-items:center;gap:10px;transition:transform .15s ease;}
+  .muse-fab-btn:hover{transform:scale(1.05);}
+  .muse-fab-btn svg{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+  .muse-fab-btn span{color:#FFFFFF;font-family:var(--sans);font-size:15px;font-weight:700;white-space:nowrap;}
   .muse-panel{width:340px;background:#FFFFFF;border:1px solid rgba(28,28,28,0.1);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(28,28,28,0.18);display:none;flex-direction:column;max-height:520px;}
   .muse-panel.open{display:flex;}
   .muse-panel-head{background:var(--blue);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;}
@@ -113,7 +114,7 @@
   .muse-full-link a{color:var(--blue);text-decoration:none;font-weight:600;}
   .muse-nudge{position:fixed;bottom:88px;right:24px;background:#FFFFFF;border:1px solid rgba(184,148,58,0.3);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--ink);box-shadow:0 6px 20px rgba(28,28,28,0.15);max-width:220px;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;pointer-events:none;z-index:998;cursor:pointer;}
   .muse-nudge.show{opacity:1;transform:translateY(0);pointer-events:auto;}
-  @media(max-width:400px){.muse-panel{width:calc(100vw - 32px);}}
+  @media(max-width:400px){.muse-panel{width:calc(100vw - 32px);} .muse-fab-btn span{display:none;} .muse-fab-btn{padding:0;width:52px;justify-content:center;}}
 </style>
 
 <div class="muse-nudge" id="muse-nudge" onclick="museNudgeClick()">Still deciding? I'm right here if you want to ask me anything. 👋</div>
@@ -145,8 +146,9 @@
     </div>
     <div class="muse-full-link"><a href="/ask-muse">Open full practice session →</a></div>
   </div>
-  <button class="muse-fab-btn" onclick="toggleMuse()" aria-label="Ask Muse">
-    <svg width="22" height="22" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <button class="muse-fab-btn" onclick="toggleMuse()" aria-label="Ask Muse — open chat">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Ask Muse</span>
   </button>
 </div>
 
