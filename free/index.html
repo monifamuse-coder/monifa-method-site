@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Resources — The Monifa Method</title>
+<meta name="description" content="Free workbooks, playbooks and resources from The Monifa Method. Download and start today — no payment required.">
+<link rel="canonical" href="https://themonifamethod.com/free">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .fr-hero{padding:64px 0 48px; text-align:center;}
+  .fr-hero h1{font-family:var(--serif);font-size:clamp(32px,5vw,48px);font-weight:600;line-height:1.2;margin-bottom:14px;}
+  .fr-hero p{font-size:17px;color:var(--ink-muted);max-width:480px;margin:0 auto;line-height:1.7;}
+  .fr-section{padding:48px 0;}
+  .fr-section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blush-mid);font-weight:600;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(204,168,158,0.25);}
+  .fr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-bottom:48px;}
+  .fr-card{background:#FFFFFF;border:1px solid rgba(28,28,28,0.08);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:box-shadow .2s ease,transform .2s ease;}
+  .fr-card:hover{box-shadow:0 6px 24px rgba(28,28,28,0.08);transform:translateY(-2px);}
+  .fr-card-tag{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .fr-card h3{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.3;color:var(--ink);}
+  .fr-card p{font-size:14px;color:var(--ink-muted);line-height:1.6;flex:1;}
+  .fr-card a{display:inline-flex;align-items:center;gap:6px;background:var(--bg-alt);border:1px solid rgba(28,28,28,0.1);color:var(--ink);font-size:13px;font-weight:600;padding:10px 16px;border-radius:6px;text-decoration:none;transition:background .15s ease;}
+  .fr-card a:hover{background:var(--bg-blush);}
+  .fr-paid{background:var(--bg-dark);border-radius:16px;padding:48px 36px;text-align:center;margin:16px 0 64px;}
+  .fr-paid h2{font-family:var(--serif);font-size:clamp(24px,4vw,34px);font-weight:600;color:var(--ink-light);margin-bottom:12px;}
+  .fr-paid p{color:rgba(250,248,245,0.6);font-size:15px;max-width:480px;margin:0 auto 28px;line-height:1.7;}
+  .fr-paid .cta{background:var(--gold);border-color:var(--gold);color:#2A1E00;}
+  .fr-divider{height:1px;background:rgba(28,28,28,0.07);margin:0 0 40px;}
+
+  /* Email-gated magnet cards */
+  .fr-gate-card{background:#FFFFFF;border:1px solid rgba(184,148,58,0.25);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;}
+  .fr-gate-card::before{content:"NEW";position:absolute;top:14px;right:-30px;background:var(--gold);color:#FFFFFF;font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 34px;transform:rotate(40deg);}
+  .fr-gate-card h3{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.3;color:var(--ink);}
+  .fr-gate-card p{font-size:14px;color:var(--ink-muted);line-height:1.6;}
+  .fr-gate-form{display:flex;flex-direction:column;gap:8px;margin-top:6px;}
+  .fr-gate-input{width:100%;padding:11px 14px;border-radius:6px;border:1px solid rgba(28,28,28,0.15);font-family:var(--sans);font-size:14px;color:var(--ink);box-sizing:border-box;}
+  .fr-gate-input::placeholder{color:var(--ink-muted);}
+  .fr-gate-input:focus{outline:none;border-color:var(--gold);}
+  .fr-gate-btn{width:100%;padding:12px;background:var(--gold);border:none;border-radius:6px;color:#FFFFFF;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s ease;}
+  .fr-gate-btn:hover{opacity:.88;}
+  .fr-gate-note{font-size:11px;color:var(--ink-muted);text-align:center;}
+  .fr-gate-success{display:none;text-align:center;padding:10px 0;}
+  .fr-gate-success a{display:inline-flex;align-items:center;gap:6px;background:var(--bg-alt);border:1px solid rgba(28,28,28,0.1);color:var(--ink);font-size:13px;font-weight:600;padding:10px 16px;border-radius:6px;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-wordmark" href="/">The Monifa Method</a>
+  <div class="nav-links">
+    <a class="nav-link" href="/ask-muse">Ask Muse</a>
+    <a class="nav-link" href="/free">Free Resources</a>
+    <a class="cta cta--sm always-show" href="/get-the-system">The System — £14.99</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="fr-hero">
+    <p class="eyebrow" style="margin-bottom:16px">Free Resources · The Monifa Method</p>
+    <h1>Tools to start before<br>you're ready to invest.</h1>
+    <p>Every resource below is free. No email required to browse — just click, download, and begin. Beacons will ask for your email on the download page to send you the file directly.</p>
+  </div>
+
+  <div class="fr-divider"></div>
+
+  <!-- NEW FLAGSHIP MAGNETS -->
+  <div class="fr-section">
+    <p class="fr-section-label">Just Added · Built for the Woman Starting from Zero</p>
+    <div class="fr-grid">
+
+      <div class="fr-gate-card">
+        <span class="fr-card-tag">Flagship Toolkit</span>
+        <h3>The Zero-Overhead Launch Toolkit</h3>
+        <p>How to build a real business with one AI tool, no team, and under £75/month in costs. The exact 3-question filter, weekend launch plan, and Claude prompts that built this business.</p>
+        <div id="fw-zero" class="fr-gate-form">
+          <form onsubmit="freeGate(event,'zero')" style="display:flex;flex-direction:column;gap:8px;">
+            <input type="email" class="fr-gate-input" placeholder="your@email.com" required id="email-zero">
+            <button type="submit" class="fr-gate-btn">Send me the toolkit →</button>
+          </form>
+          <p class="fr-gate-note">One email. No spam. Unsubscribe any time.</p>
+        </div>
+        <div id="success-zero" class="fr-gate-success">
+          <p style="font-size:13px;color:var(--ink-muted);margin-bottom:10px;">You're in — check your inbox 📩</p>
+          <a href="/downloads/zero-overhead-launch-toolkit.pdf" target="_blank">Download now →</a>
+        </div>
+      </div>
+
+      <div class="fr-gate-card">
+        <span class="fr-card-tag">Companion Card</span>
+        <h3>10 Business Ideas with Claude</h3>
+        <p>The quick-reference card for the video — all 10 models, revenue potential, monthly costs, and what Claude does for each one. Save it. Come back to it.</p>
+        <div id="fw-ideas" class="fr-gate-form">
+          <form onsubmit="freeGate(event,'ideas')" style="display:flex;flex-direction:column;gap:8px;">
+            <input type="email" class="fr-gate-input" placeholder="your@email.com" required id="email-ideas">
+            <button type="submit" class="fr-gate-btn">Send me the card →</button>
+          </form>
+          <p class="fr-gate-note">One email. No spam. Unsubscribe any time.</p>
+        </div>
+        <div id="success-ideas" class="fr-gate-success">
+          <p style="font-size:13px;color:var(--ink-muted);margin-bottom:10px;">You're in — check your inbox 📩</p>
+          <a href="/downloads/10-business-ideas-claude.pdf" target="_blank">Download now →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="fr-divider"></div>
+
+  <!-- INNER WORK -->
+  <div class="fr-section">
+    <p class="fr-section-label">Self-Leadership · Wealth Psychology — Pillars 01 & 02</p>
+    <div class="fr-grid">
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 02 · Identity</span>
+        <h3>The Identity Shift Workbook</h3>
+        <p>130 pages. The inner work behind every permission essay — money, identity, and the beliefs installed before you were old enough to question them.</p>
+        <a href="https://monifamuse.com/shop/TheIdentityShiftWorkbook" target="_blank">Download free →</a>
+      </div>
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 02 · Wealth Psychology</span>
+        <h3>The Money Mindset Workbook</h3>
+        <p>130 pages. Rewrite your financial story from the root. Money ancestry, belief rewiring, and a calm pricing framework built for women who undercharge.</p>
+        <a href="https://monifamuse.com/shop/c74aae01-c873-46e4-a529-11a370e7f078" target="_blank">Download free →</a>
+      </div>
+
+    </div>
+
+    <div class="fr-divider"></div>
+
+    <!-- LAUNCH SPRINT -->
+    <p class="fr-section-label">The 48-Hour Launch Sprint — Pillar 04</p>
+    <div class="fr-grid">
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 04 · The 48-Hour Launch Sprint</span>
+        <h3>The 7-Day Launch Workbook</h3>
+        <p>Validate your idea before you build a single thing. The 7-day action plan successful women use to choose fast and test before committing.</p>
+        <a href="https://monifamuse.com/shop/7DayLaunchWorkbook" target="_blank">Download free →</a>
+      </div>
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 04 · The 48-Hour Launch Sprint</span>
+        <h3>The Passive Income Playbook</h3>
+        <p>Build a product system that generates revenue without your daily presence. The business architecture of the solo digital operator.</p>
+        <a href="https://monifamuse.com/shop/ThePassiveIncomePlaybook" target="_blank">Download free →</a>
+      </div>
+
+    </div>
+
+    <div class="fr-divider"></div>
+
+    <!-- VISIBILITY & AI -->
+    <p class="fr-section-label">Faceless Traffic · AI Tools — Pillars 05 & 06</p>
+    <div class="fr-grid">
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 05 · Visibility</span>
+        <h3>100 Content Ideas for Creators</h3>
+        <p>Ideas organised by content type — educational, story, promotional. Designed to work for faceless channels. No camera required.</p>
+        <a href="https://monifamuse.com/shop/2a1f9945-95ec-4e2d-af01-23c5f1b98238" target="_blank">Download free →</a>
+      </div>
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 05 · Visibility</span>
+        <h3>50 AI Prompts — Social Media</h3>
+        <p>Done-for-you AI prompts across every content type. Adapts to your niche and voice. No prompt engineering experience needed.</p>
+        <a href="https://monifamuse.com/shop/56be42ac-4947-4c38-b268-a49adb6bb0c6" target="_blank">Download free →</a>
+      </div>
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 06 · AI Tools</span>
+        <h3>AI for Content Creators</h3>
+        <p>The AI audit — what you should actually be using. How to make AI sound like you. Content systems and automation for the solo operator.</p>
+        <a href="https://monifamuse.com/shop/64edbfbf-b494-48a7-abbe-c688b92538d7" target="_blank">Download free →</a>
+      </div>
+
+      <div class="fr-card">
+        <span class="fr-card-tag">Pillar 06 · Faceless</span>
+        <h3>Faceless YouTube Channel — Free Course</h3>
+        <p>No camera. No studio. No team. Everything you need to start and grow a faceless YouTube channel using AI avatars.</p>
+        <a href="https://monifamuse.com/shop/FREECOURSEFacelessYoutubeChannel" target="_blank">Access free →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAID CTA -->
+  <div class="fr-paid">
+    <h2>Ready for the complete system?</h2>
+    <p>Seven pillars. Right order. The inner work and the outer system — companion workbooks for every layer, the somatic practices, and Ask Muse, the AI practice coach that personalises every lesson to your specific situation.</p>
+    <a class="cta" href="/get-the-system">The Successful Woman's System — £14.99</a>
+  </div>
+
+</div>
+
+<footer>
+  <p style="color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase">The Monifa Method</p>
+  <p style="margin-top:8px">&copy; 2026 The Monifa Method. All rights reserved.</p>
+</footer>
+
+<script>
+// Kit form IDs reused from existing Pinterest ad funnels
+const KIT_FORMS = {
+  zero: "9637175",
+  ideas: "9637182"
+};
+
+function freeGate(e, key) {
+  e.preventDefault();
+  const email = document.getElementById("email-" + key).value;
+  const formId = KIT_FORMS[key];
+
+  const formData = new FormData();
+  formData.append("email_address", email);
+
+  fetch(`https://app.kit.com/forms/${formId}/subscriptions`, {
+    method: "POST",
+    body: formData,
+    mode: "no-cors"
+  }).catch(() => {}).finally(() => {
+    document.getElementById("fw-" + key).style.display = "none";
+    document.getElementById("success-" + key).style.display = "block";
+  });
+}
+</script>
+
+</body>
+</html>
