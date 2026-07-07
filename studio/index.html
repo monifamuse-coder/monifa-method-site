@@ -28,6 +28,8 @@
   .video-ready.show{display:block;}
   .video-ready a{display:inline-block;padding:12px 24px;background:#2C4F6A;color:#FFFFFF;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;}
   .saved-note{font-size:12px;color:var(--ink-muted);margin-top:6px;}
+  .metadata-box{display:none;margin-top:32px;padding-top:24px;border-top:1px solid rgba(28,28,28,0.1);}
+  .metadata-box.show{display:block;}
 </style>
 </head>
 <body>
@@ -49,11 +51,21 @@
   </div>
 
   <div class="field">
+    <label>Orientation</label>
+    <select id="orientation" class="fr-gate-input" style="width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(28,28,28,0.15);font-family:var(--sans);font-size:14px;">
+      <option value="landscape">Landscape — for YouTube (1920×1080)</option>
+      <option value="portrait">Portrait — for Shorts/Reels (1080×1920)</option>
+      <option value="square">Square — flexible posting (1080×1080)</option>
+    </select>
+  </div>
+
+  <div class="field">
     <label>Script (narration only)</label>
     <textarea id="script" placeholder="Paste your narration script here — the exact words Muse should say, nothing else."></textarea>
   </div>
 
   <button class="studio-btn" id="submitBtn" onclick="generateVideo()">Send to HeyGen →</button>
+  <button class="studio-btn" id="metadataBtn" onclick="generateMetadataOnly()" style="background:var(--blue);margin-top:10px;">Just write title, description & thumbnail text (free, no video) →</button>
 
   <div class="status-box" id="statusBox">
     <p class="status-line"><span class="status-dot"></span><span id="statusText">Starting...</span></p>
@@ -61,6 +73,12 @@
 
   <div class="video-ready" id="videoReady">
     <a id="videoLink" href="#" target="_blank">Download your video →</a>
+  </div>
+
+  <div class="metadata-box" id="metadataBox">
+    <h2 style="font-family:var(--serif);font-size:20px;margin-bottom:10px;">Your title, description & thumbnail text</h2>
+    <p style="font-size:13px;color:var(--ink-muted);margin-bottom:16px;">Generated from your script — copy what you need straight into YouTube.</p>
+    <div id="metadataContent" style="white-space:pre-wrap;font-size:14px;line-height:1.7;background:var(--bg-alt);padding:20px;border-radius:8px;"></div>
   </div>
 </div>
 
@@ -71,10 +89,12 @@ async function generateVideo() {
   const avatarId = document.getElementById('avatarId').value.trim();
   const voiceId = document.getElementById('voiceId').value.trim();
   const script = document.getElementById('script').value.trim();
+  const orientation = document.getElementById('orientation').value;
   const btn = document.getElementById('submitBtn');
   const statusBox = document.getElementById('statusBox');
   const statusText = document.getElementById('statusText');
   const videoReady = document.getElementById('videoReady');
+  const metadataBox = document.getElementById('metadataBox');
 
   if (!avatarId || !voiceId || !script) {
     alert('Please fill in the avatar ID, voice ID, and script first.');
@@ -91,7 +111,7 @@ async function generateVideo() {
     const res = await fetch('/api/heygen-generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ script, avatarId, voiceId })
+      body: JSON.stringify({ script, avatarId, voiceId, orientation })
     });
     const data = await res.json();
 
@@ -109,6 +129,41 @@ async function generateVideo() {
     statusText.textContent = 'Something went wrong. Try again.';
     btn.disabled = false;
     btn.textContent = 'Send to HeyGen →';
+  }
+}
+
+async function generateMetadataOnly() {
+  const script = document.getElementById('script').value.trim();
+  const metaBtn = document.getElementById('metadataBtn');
+
+  if (!script) {
+    alert('Paste your script first — that\\'s all this needs.');
+    return;
+  }
+
+  metaBtn.disabled = true;
+  metaBtn.textContent = 'Writing...';
+  await generateMetadata(script);
+  metaBtn.disabled = false;
+  metaBtn.textContent = 'Just write title, description & thumbnail text (free, no video) →';
+}
+
+async function generateMetadata(script) {
+  const metadataBox = document.getElementById('metadataBox');
+  const metadataContent = document.getElementById('metadataContent');
+  metadataContent.textContent = 'Writing your title, description and thumbnail text...';
+  metadataBox.classList.add('show');
+
+  try {
+    const res = await fetch('/api/generate-metadata', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ script })
+    });
+    const data = await res.json();
+    metadataContent.textContent = data.reply || 'Could not generate this time — try again.';
+  } catch (err) {
+    metadataContent.textContent = 'Something went wrong generating this. You can try again separately.';
   }
 }
 

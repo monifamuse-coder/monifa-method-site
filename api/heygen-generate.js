@@ -20,7 +20,7 @@ export default async function handler(req) {
   }
 
   try {
-    const { script, avatarId, voiceId } = await req.json();
+    const { script, avatarId, voiceId, orientation } = await req.json();
 
     if (!script || !avatarId || !voiceId) {
       return new Response(JSON.stringify({ error: 'Missing script, avatarId, or voiceId' }), {
@@ -28,6 +28,14 @@ export default async function handler(req) {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
       });
     }
+
+    // Landscape for YouTube, portrait for Shorts/Reels, square for flexible posting
+    const dimensions = {
+      landscape: { width: 1920, height: 1080 },
+      portrait: { width: 1080, height: 1920 },
+      square: { width: 1080, height: 1080 },
+    };
+    const dimension = dimensions[orientation] || dimensions.landscape;
 
     const response = await fetch('https://api.heygen.com/v3/videos', {
       method: 'POST',
@@ -41,6 +49,7 @@ export default async function handler(req) {
         engine: { type: 'avatar_v' },
         script: script,
         voice_id: voiceId,
+        dimension: dimension,
       }),
     });
 
