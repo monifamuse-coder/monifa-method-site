@@ -90,8 +90,7 @@ function handleKitGate(e, formId, formDivId, successId, emailId) {
   fetch(`https://app.kit.com/forms/${formId}/subscriptions`, {
     method: "POST", body: formData, mode: "no-cors"
   }).catch(() => {}).finally(() => {
-    document.getElementById(formDivId).style.display = "none";
-    document.getElementById(successId).style.display = "block";
+    window.location.href = "/thank-you";
   });
 }
 </script>

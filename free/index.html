@@ -206,8 +206,7 @@ function freeGate(e, key) {
     body: formData,
     mode: "no-cors"
   }).catch(() => {}).finally(() => {
-    document.getElementById("fw-" + key).style.display = "none";
-    document.getElementById("success-" + key).style.display = "block";
+    window.location.href = "/thank-you";
   });
 }
 </script>
