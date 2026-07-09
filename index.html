@@ -368,6 +368,10 @@
     document.getElementById('muse-sugg').style.display = 'none';
     wSend();
   }
+  let wUserMessageCount = 0;
+  let wCheckInShown = false;
+  const W_HARD_CAP = 15;
+
   async function wSend() {
     const inp = document.getElementById('muse-inp');
     const btn = document.getElementById('muse-send-btn');
@@ -376,6 +380,7 @@
     document.getElementById('muse-sugg').style.display = 'none';
     wAppend('user', text);
     wMsgs.push({ role: 'user', content: text });
+    wUserMessageCount++;
     inp.value = ''; btn.disabled = true; wShowTyping();
     try {
       const res = await fetch('/api/chat', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({messages: wMsgs}) });
@@ -384,6 +389,18 @@
       const reply = data.reply || 'Ask Muse is resting. Try again in a moment.';
       wAppend('muse', reply);
       wMsgs.push({ role: 'assistant', content: reply });
+
+      if (wUserMessageCount === 8 && !wCheckInShown) {
+        wCheckInShown = true;
+        setTimeout(() => {
+          wAppend('muse', "This is turning into a really good conversation \u2014 want to keep going properly? <a href='/ask-muse' style='color:var(--gold);font-weight:600;'>Continue in my full practice session \u2192</a> I can save your progress there and get you a clear next step.");
+        }, 800);
+      }
+      if (wUserMessageCount >= W_HARD_CAP) {
+        document.getElementById('muse-inp').disabled = true;
+        document.getElementById('muse-send-btn').disabled = true;
+        document.getElementById('muse-inp').placeholder = "Please continue in the full session \u2014 link above";
+      }
     } catch { wRemoveTyping(); wAppend('muse', 'Something went quiet. Try asking again.'); }
     btn.disabled = false; inp.focus();
   }

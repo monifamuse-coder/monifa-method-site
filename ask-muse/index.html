@@ -55,6 +55,17 @@
   .muse-note{text-align:center;margin-top:20px;font-size:13px;color:var(--ink-muted);font-style:italic;}
   .muse-note a{color:var(--teal);text-decoration:underline;text-underline-offset:3px;}
   @media(max-width:520px){.chat-messages{height:360px;}}
+
+  /* Depth check-in modal */
+  .depth-overlay{position:fixed;inset:0;background:rgba(28,28,28,0.5);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;}
+  .depth-overlay.show{display:flex;}
+  .depth-modal{background:#FFFFFF;border-radius:16px;padding:36px 32px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.25);}
+  .depth-modal h3{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:12px;color:var(--ink);}
+  .depth-modal p{font-size:14px;color:var(--ink-muted);line-height:1.6;margin-bottom:20px;}
+  .depth-modal input{width:100%;padding:12px 16px;border-radius:8px;border:1px solid rgba(28,28,28,0.15);font-family:var(--sans);font-size:14px;margin-bottom:12px;box-sizing:border-box;}
+  .depth-modal-btns{display:flex;gap:10px;}
+  .depth-btn-primary{flex:1;padding:13px;background:var(--gold);border:none;border-radius:8px;color:#FFFFFF;font-weight:600;font-size:14px;cursor:pointer;}
+  .depth-btn-secondary{padding:13px 18px;background:transparent;border:1px solid rgba(28,28,28,0.15);border-radius:8px;color:var(--ink-muted);font-size:14px;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -123,6 +134,52 @@
 
 <script>
 const messages = [];
+let userMessageCount = 0;
+let depthModalShown = false;
+let depthChoice = null;
+const HARD_CAP = 25;
+
+function dismissDepthModal() {
+  document.getElementById('depthOverlay').classList.remove('show');
+  depthChoice = 'continue';
+}
+
+function submitDepthCheckIn(e) {
+  e.preventDefault();
+  const email = document.getElementById('depthEmail').value;
+  const formData = new FormData();
+  formData.append('email_address', email);
+  fetch('https://app.kit.com/forms/PLACEHOLDER_KIT_ID_DEPTH/subscriptions', {
+    method: 'POST', body: formData, mode: 'no-cors'
+  }).catch(() => {}).finally(() => {
+    document.getElementById('depthOverlay').classList.remove('show');
+    // Inject a hidden steering message so Muse's next reply concretely follows the chosen path
+    const steer = depthChoice === 'dfy'
+      ? "I'd like this built for me rather than continuing to explore — please help me with that now."
+      : "Please give me the specific pillar to start with now, clearly, based on everything we've discussed.";
+    messages.push({ role: 'user', content: steer });
+    appendMsg('muse', "Got it — saved. Let's get you moving. 💛");
+    sendSteeringMessage();
+  });
+}
+
+async function sendSteeringMessage() {
+  showTyping();
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages }),
+    });
+    const data = await res.json();
+    removeTyping();
+    const reply = data.reply || 'Ask Muse is resting. Try again in a moment.';
+    appendMsg('muse', reply);
+    messages.push({ role: 'assistant', content: reply });
+  } catch {
+    removeTyping();
+  }
+}
 
 function autoResize(el) {
   el.style.height = 'auto';
@@ -173,6 +230,7 @@ async function sendMessage() {
   document.getElementById('suggestions').style.display = 'none';
   appendMsg('user', text);
   messages.push({ role: 'user', content: text });
+  userMessageCount++;
   input.value = '';
   input.style.height = 'auto';
   btn.disabled = true;
@@ -189,6 +247,25 @@ async function sendMessage() {
     const reply = data.reply || 'Ask Muse is resting. Try again in a moment.';
     appendMsg('muse', reply);
     messages.push({ role: 'assistant', content: reply });
+
+    // After genuine depth (10 exchanges), gently offer a concrete next step — once per session
+    if (userMessageCount === 10 && !depthModalShown) {
+      depthModalShown = true;
+      setTimeout(() => {
+        document.getElementById('depthOverlay').classList.add('show');
+      }, 1200);
+    }
+
+    // Hard technical cap — long conversations genuinely risk losing groundedness.
+    // This isn't optional or prompt-based; it's a real stop regardless of how the conversation is going.
+    if (userMessageCount >= HARD_CAP) {
+      const input = document.getElementById('chat-input');
+      const sendBtn = document.getElementById('send-btn');
+      input.disabled = true;
+      input.placeholder = "This session has reached its limit — see below";
+      sendBtn.disabled = true;
+      appendMsg('muse', "We've covered so much together, and I want to make sure what happens next is real progress, not just more talking. This is where I'll pause — please use the option above to save this and get your concrete next step. I'm genuinely here for you, just in a way that actually moves things forward. 💛");
+    }
   } catch {
     removeTyping();
     appendMsg('muse', 'Something went quiet on my end. Try asking again.');
@@ -200,5 +277,20 @@ async function sendMessage() {
 </script>
 
 <script defer src="/_vercel/insights/script.js"></script>
+<div class="depth-overlay" id="depthOverlay">
+  <div class="depth-modal">
+    <h3>Let's turn this into something real 💛</h3>
+    <p>We've covered a lot together. Rather than just talking, let's get you an actual next step.</p>
+    <form onsubmit="submitDepthCheckIn(event)">
+      <input type="email" id="depthEmail" placeholder="your@email.com" required>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <button type="submit" data-choice="pillar" class="depth-btn-primary" style="width:100%;" onclick="depthChoice='pillar'">Show me where to start →</button>
+        <button type="submit" data-choice="dfy" class="depth-btn-primary" style="width:100%;background:var(--blue);" onclick="depthChoice='dfy'">I'd rather have this built for me →</button>
+        <button type="button" class="depth-btn-secondary" style="width:100%;" onclick="dismissDepthModal()">Just save this, I want to keep chatting a little more</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 </body>
 </html>
