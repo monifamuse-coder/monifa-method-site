@@ -48,3 +48,35 @@ complaint. It is called **The Faceless Studio** on the site (pillar 08).
 ## Grandfathering
 Existing £14.99 buyers keep everything, including every pillar added since. This is
 stated plainly in the objections block. No countdown, no scarcity mechanic.
+
+## Demo video section — now self-healing (added after review)
+The two empty video players on the live page were the worst thing on it: two dead
+play buttons immediately above the price block, on a £197 page.
+
+`/get-the-system` now hides the "See It Happen" section unless it finds a playable
+clip in `/assets/`. No files → the section does not render at all. One file → that
+clip shows on its own, centred. Two files → both, side by side.
+
+This means the page can go live TODAY at £197 with no dead players, and the section
+appears by itself the moment the MP4s are pushed. No code change, no switch.
+
+Tested both states: missing files → hidden; playable files → visible.
+
+## Video added
+Five avatar-delivered lessons, re-encoded 158 MB → 26 MB (H.264 CRF 27, faststart).
+Two of the five arrived as truncated files from the first encode pass and were
+re-encoded; all five now verified valid via ffprobe.
+
+**New: "Watch A Lesson" on the sales page.** Three real lessons from three different
+pillars (03 Pricing Like a CFO, 05 Faceless Course Creation, 06 The Invisible Funnel),
+shown as vertical 9:16. This answers the biggest unspoken objection to a £197
+fully-AI-delivered course — "will an AI actually teach me well?" — by demonstration
+rather than argument.
+
+**New: "The Teaching" on the homepage.** Replaces the three placeholder YouTube cards
+(which linked to a channel, not to proof) with one real lesson playing in full:
+"Discipline Is Not the Problem".
+
+Both sections are self-healing — they hide themselves if the clips are missing.
+
+Spare, unplaced: `lesson-p04-what-to-sell.mp4`.

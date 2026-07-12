@@ -258,29 +258,24 @@
   </div>
 </section>
 
-<!-- ============ MONIFAMUSE / CHANNEL ============ -->
-<section class="section">
+<!-- ============ THE TEACHING (real avatar lesson) ============ -->
+<section class="section" id="teaching">
   <div class="wrap">
-    <h2 class="section-title">The thinking behind the system</h2>
-    <p class="section-sub">@MonifaMuse — narrated essays on the psychology of building something, every week.</p>
+    <p class="eyebrow" style="margin-bottom:18px;">The Teaching</p>
+    <h2 class="section-title">An avatar delivers every lesson. Watch one and decide.</h2>
+    <p class="section-sub">Not a trailer. A real lesson from the system, in full.</p>
 
-    <div class="channel-grid">
-      <a class="channel-card" href="https://youtube.com/@MonifaMuse" target="_blank" rel="noopener">
-        <span class="title">the permission you're still waiting for</span>
-        <span class="tag">Watch on YouTube</span>
-      </a>
-      <a class="channel-card" href="https://youtube.com/@MonifaMuse" target="_blank" rel="noopener">
-        <span class="title">what you're actually selling</span>
-        <span class="tag">Watch on YouTube</span>
-      </a>
-      <a class="channel-card" href="https://youtube.com/@MonifaMuse" target="_blank" rel="noopener">
-        <span class="title">why your brain rejects your own success</span>
-        <span class="tag">Watch on YouTube</span>
-      </a>
-    </div>
+    <figure class="feature-lesson" id="feature-lesson" hidden>
+      <video controls preload="none" playsinline poster="/assets/lesson-p07-discipline.jpg">
+        <source src="/assets/lesson-p07-discipline.mp4" type="video/mp4">
+      </video>
+      <figcaption>Discipline Is Not the Problem &mdash; on why the waiting never looks like waiting.</figcaption>
+    </figure>
 
-    <div class="cta-wrap" style="margin-top:30px;">
-      <a class="cta-ghost" href="https://youtube.com/@MonifaMuse" target="_blank" rel="noopener">Watch the full channel on YouTube &rarr;</a>
+    <p class="chip-more" style="margin-top:26px;">Everything on this site was built by one woman with no coding background, no team, and no face &mdash; which is the exact thing the course is teaching.</p>
+
+    <div class="cta-wrap" style="margin-top:26px;">
+      <a class="cta-ghost" href="https://youtube.com/@MonifaMuse" target="_blank" rel="noopener">More on the channel &rarr;</a>
     </div>
   </div>
 </section>
@@ -460,6 +455,25 @@
     nudge.classList.add('show');
     setTimeout(() => nudge.classList.remove('show'), 8000);
   }, 8000);
+</script>
+
+
+<script>
+  /* The featured lesson only appears if the clip actually loads. */
+  (function () {
+    var fig = document.getElementById('feature-lesson');
+    if (!fig) return;
+    var v = fig.querySelector('video'), done = false;
+    var ok  = function () { if (!done) { done = true; fig.hidden = false; } };
+    var bad = function () { if (!done) { done = true; fig.remove(); } };
+    v.addEventListener('loadedmetadata', ok);
+    v.addEventListener('error', bad, true);
+    var src = fig.querySelector('source');
+    if (src) src.addEventListener('error', bad);
+    v.preload = 'metadata';
+    v.load();
+    setTimeout(bad, 6000);
+  })();
 </script>
 
 <script defer src="/_vercel/insights/script.js"></script>

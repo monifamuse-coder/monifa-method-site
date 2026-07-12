@@ -138,6 +138,42 @@
 </section>
 
 
+
+<!-- ============ WATCH A LESSON (real avatar-delivered lessons) ============
+     Files live in /assets/. Self-healing like the demo section: any clip that
+     fails to load removes itself; if none load, the whole section stays hidden.
+     ================================================================= -->
+<section class="section section-blush" id="watch" hidden>
+  <div class="wrap">
+    <p class="eyebrow" style="margin-bottom:18px;">Watch A Lesson</p>
+    <h2 class="section-title">The teaching is the thing being judged. So here it is.</h2>
+    <p class="section-sub">Three real lessons, from three different pillars. Not a trailer, not a sizzle reel — the actual delivery, unedited for this page.</p>
+
+    <div class="lesson-grid" id="lesson-grid">
+      <figure class="lesson">
+        <video controls preload="none" playsinline poster="/assets/lesson-p03-pricing.jpg">
+          <source src="/assets/lesson-p03-pricing.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="lp">Pillar 03</span>Pricing Like a CFO<em>Separating self-worth from the price on the product.</em></figcaption>
+      </figure>
+      <figure class="lesson">
+        <video controls preload="none" playsinline poster="/assets/lesson-p05-faceless.jpg">
+          <source src="/assets/lesson-p05-faceless.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="lp">Pillar 05</span>Faceless Course Creation<em>Building the course without ever appearing in it.</em></figcaption>
+      </figure>
+      <figure class="lesson">
+        <video controls preload="none" playsinline poster="/assets/lesson-p06-funnel.jpg">
+          <source src="/assets/lesson-p06-funnel.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="lp">Pillar 06</span>The Invisible Funnel<em>Leads arriving without a face, and without a feed.</em></figcaption>
+      </figure>
+    </div>
+
+    <p class="chip-more" style="margin-top:28px;">An avatar delivers every lesson in this course. That is not the compromise. That is the curriculum, demonstrating itself.</p>
+  </div>
+</section>
+
 <!-- ============ WHAT IS ACTUALLY INSIDE ============ -->
 <section class="section" id="inventory">
   <div class="wrap">
@@ -245,13 +281,13 @@
        Keep each clip under ~15MB and 20-40 seconds. Screen recordings are fine.
        If a file is missing the browser just shows the poster/fallback — the page will not break.
      ================================================================= -->
-<section class="section" id="see-it">
+<section class="section" id="see-it" hidden>
   <div class="wrap">
     <p class="eyebrow" style="margin-bottom:18px;">See It Happen</p>
     <h2 class="section-title">This is the moment the course stops being a course.</h2>
     <p class="section-sub">Not a mock-up. The actual Generate mode, producing the actual file.</p>
 
-    <div class="demo-grid">
+    <div class="demo-grid" id="demo-grid">
       <figure class="demo">
         <video controls preload="none" playsinline poster="/assets/muse-generate-pricing.jpg">
           <source src="/assets/muse-generate-pricing.mp4" type="video/mp4">
@@ -550,6 +586,92 @@
     nudge.classList.add('show');
     setTimeout(() => nudge.classList.remove('show'), 8000);
   }, 8000);
+</script>
+
+
+<script>
+  /* Self-healing demo section.
+     The "See It Happen" section stays hidden until the MP4s actually exist in
+     /assets/. Drop the files in and it appears on its own — no code change.
+     A clip that fails to load removes only itself; if none load, the whole
+     section stays hidden and the page reads as if it was never there. */
+  (function () {
+    var section = document.getElementById('see-it');
+    if (!section) return;
+    var figures = section.querySelectorAll('.demo');
+    var pending = figures.length;
+
+    function settle(fig, ok) {
+      if (!ok) fig.remove();
+      if (--pending === 0) {
+        if (section.querySelectorAll('.demo').length > 0) {
+          section.hidden = false;
+          if (section.querySelectorAll('.demo').length === 1) {
+            document.getElementById('demo-grid').style.gridTemplateColumns = '1fr';
+            document.getElementById('demo-grid').style.maxWidth = '520px';
+          }
+        }
+      }
+    }
+
+    figures.forEach(function (fig) {
+      var v = fig.querySelector('video');
+      if (!v) return settle(fig, false);
+      var done = false;
+      var ok = function () { if (!done) { done = true; settle(fig, true); } };
+      var bad = function () { if (!done) { done = true; settle(fig, false); } };
+      v.addEventListener('loadedmetadata', ok);
+      v.addEventListener('error', bad, true);
+      var src = fig.querySelector('source');
+      if (src) src.addEventListener('error', bad);
+      v.preload = 'metadata';
+      v.load();
+      setTimeout(bad, 6000); // slow or missing — either way, do not show a dead player
+    });
+  })();
+</script>
+
+
+<script>
+  /* Self-healing lesson section — same contract as the demo section.
+     Any clip that cannot load removes itself. If none load, the section
+     never appears and the page reads as if it was never written. */
+  (function () {
+    var section = document.getElementById('watch');
+    if (!section) return;
+    var figures = section.querySelectorAll('.lesson');
+    var pending = figures.length;
+
+    function settle(fig, ok) {
+      if (!ok) fig.remove();
+      if (--pending === 0) {
+        var left = section.querySelectorAll('.lesson').length;
+        if (left > 0) {
+          section.hidden = false;
+          if (left < 3) {
+            var g = document.getElementById('lesson-grid');
+            g.style.gridTemplateColumns = 'repeat(' + left + ', minmax(0, 260px))';
+            g.style.justifyContent = 'center';
+          }
+        }
+      }
+    }
+
+    figures.forEach(function (fig) {
+      var v = fig.querySelector('video');
+      if (!v) return settle(fig, false);
+      var done = false;
+      var ok  = function () { if (!done) { done = true; settle(fig, true); } };
+      var bad = function () { if (!done) { done = true; settle(fig, false); } };
+      v.addEventListener('loadedmetadata', ok);
+      v.addEventListener('error', bad, true);
+      var src = fig.querySelector('source');
+      if (src) src.addEventListener('error', bad);
+      v.preload = 'metadata';
+      v.load();
+      setTimeout(bad, 6000);
+    });
+  })();
 </script>
 
 <script defer src="/_vercel/insights/script.js"></script>
