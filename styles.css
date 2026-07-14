@@ -529,3 +529,12 @@ footer .foot-links a{margin:0 8px; text-decoration:underline; color:rgba(250,248
 
 /* --- Key stat numbers inside pull-quotes get colour emphasis --- */
 .pull-quote .stat{color:var(--gold); font-weight:700; font-style:normal;}
+
+/* --- Key pillar callout: navy fill, matches the CTA button, for the one tile that matters most --- */
+.gen-out.is-key{
+  background:var(--blue); border-color:var(--blue);
+  box-shadow:0 6px 20px rgba(44,79,106,0.22);
+}
+.gen-out.is-key .tag{color:var(--gold-light);}
+.gen-out.is-key h4{color:#FFFFFF;}
+.gen-out.is-key p{color:rgba(255,255,255,0.82);}
