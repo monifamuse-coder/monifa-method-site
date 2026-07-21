@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brand Bible Blueprint (Free PDF) | The Monifa Method</title>
+<meta name="description" content="Who your avatar is, its honest disclosure line, and its first real scene — the free workbook. No payment, no pressure.">
+<meta property="og:title" content="The Brand Bible Blueprint (Free PDF) | The Monifa Method">
+<meta property="og:description" content="Who your avatar is, its honest disclosure line, and its first real scene — the free workbook.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://themonifamethod.com/free/brand-bible-taster">
+<link rel="canonical" href="https://themonifamethod.com/free/brand-bible-taster">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .muse-page{max-width:720px;margin:0 auto;padding:40px 24px 60px;}
+  .muse-header{text-align:center;margin-bottom:32px;}
+  .muse-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:999px;padding:6px 16px;font-size:12px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;}
+  .muse-header h1{font-family:var(--serif);font-size:clamp(28px,4.5vw,40px);font-weight:600;margin-bottom:12px;}
+  .muse-header p{color:var(--ink-muted);font-size:16px;max-width:480px;margin:0 auto;}
+  .includes-strip{display:flex;justify-content:center;gap:10px;margin:24px 0 32px;flex-wrap:wrap;}
+  .includes-pill{font-size:12px;color:var(--ink-muted);border:1px solid rgba(28,28,28,0.12);border-radius:999px;padding:6px 14px;}
+  .gate-card{background:#FFFFFF;border:1px solid rgba(204,168,158,0.3);border-radius:12px;padding:36px 28px;max-width:440px;margin:0 auto;text-align:center;}
+  .gate-card h2{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;}
+  .gate-card p{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:20px;}
+  .gate-form{display:flex;flex-direction:column;gap:10px;}
+  .gate-form input{padding:12px 16px;border-radius:8px;border:1px solid rgba(28,28,28,0.15);font-family:inherit;font-size:14px;}
+  .free-note{font-size:12px;color:var(--ink-muted);margin-top:14px;}
+  .upsell-note{margin-top:36px; text-align:center; font-size:14px; color:var(--ink-muted); max-width:500px; margin-left:auto; margin-right:auto;}
+  .upsell-note a{color:var(--gold); font-weight:600; text-decoration:none;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-wordmark" href="/">The Monifa Method</a>
+  <div class="nav-links">
+    <a class="nav-link" href="/ask-muse">Ask Muse</a>
+    <a class="cta cta--sm always-show" href="/get-the-system">The System — £47</a>
+  </div>
+</nav>
+
+<div class="muse-page">
+  <div class="muse-header">
+    <span class="muse-badge">Free · The Workbook</span>
+    <h1>The Brand Bible Blueprint — the free workbook.</h1>
+    <p>Who your avatar is, its honest disclosure line, and its first real scene — the questions, the templates, the exact prompts. No payment, no pressure.</p>
+  </div>
+
+  <div class="includes-strip">
+    <span class="includes-pill">Day 1 — Finding Your Muse</span>
+    <span class="includes-pill">Day 2 — The Transparency Flex</span>
+    <span class="includes-pill">Day 3 — Their First Scene</span>
+  </div>
+
+  <!-- ============ EMAIL GATE ============ -->
+  <div id="gate-card" class="gate-card">
+    <h2>Get the free workbook</h2>
+    <p>One email, then confirm your subscription — the PDF lands straight after. The questions, the templates, and the exact image prompts, ready to fill in.</p>
+    <form id="gate-form" class="gate-form" onsubmit="handleGate(event)">
+      <input type="email" id="taster-email" placeholder="your@email.com" required>
+      <button type="submit" class="cta">Send me the workbook →</button>
+    </form>
+    <p class="free-note">Free · No payment required · One email, no spam</p>
+  </div>
+
+  <p class="upsell-note">Want the full three-day mini-course — video for each day, plus Muse answering your specific questions as you go? That's <a href="/blueprint">The Brand Bible Blueprint with Practice Coach — £15</a>.</p>
+</div>
+
+<footer>
+  <a href="/" style="text-decoration:none; color:var(--gold); font-size:12px; letter-spacing:2px; text-transform:uppercase;">&larr; The Monifa Method</a>
+  <p style="margin-top:10px;">&copy; 2026 The Monifa Method. All rights reserved.</p>
+</footer>
+
+<script>
+function handleGate(e) {
+  e.preventDefault();
+  const email = document.getElementById('taster-email').value;
+  const formData = new FormData();
+  formData.append("email_address", email);
+  fetch(`https://app.kit.com/forms/9699865/subscriptions`, {
+    method: "POST", body: formData, mode: "no-cors"
+  }).catch(() => {}).finally(() => {
+    window.location.href = '/thank-you';
+  });
+}
+</script>
+</body>
+</html>
