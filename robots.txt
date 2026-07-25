@@ -9,5 +9,6 @@ Disallow: /downloads/
 Disallow: /blueprint/day1
 Disallow: /blueprint/day2
 Disallow: /blueprint/day3
+Disallow: /free/brand-bible-taster/delivered
 
 Sitemap: https://themonifamethod.com/sitemap.xml
