@@ -23,6 +23,8 @@
   .includes-strip{display:flex;justify-content:center;gap:10px;margin:24px 0 32px;flex-wrap:wrap;}
   .includes-pill{font-size:12px;color:var(--ink-muted);border:1px solid rgba(28,28,28,0.12);border-radius:999px;padding:6px 14px;}
   .gate-card{background:#FFFFFF;border:1px solid rgba(204,168,158,0.3);border-radius:12px;padding:36px 28px;max-width:440px;margin:0 auto;text-align:center;}
+  .gate-band{background:var(--ink); border-radius:20px; padding:40px 24px; margin:40px 0;}
+  .gate-band .gate-card{box-shadow:0 12px 40px rgba(0,0,0,0.25);}
   .gate-card h2{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;}
   .gate-card p{color:var(--ink-muted);font-size:14px;line-height:1.6;margin-bottom:20px;}
   .gate-form{display:flex;flex-direction:column;gap:10px;}
@@ -78,6 +80,7 @@
   </div>
 
   <!-- ============ EMAIL GATE ============ -->
+  <div class="gate-band">
   <div id="gate-card" class="gate-card">
     <h2>Get the free workbook</h2>
     <p>One email, then confirm your subscription — the PDF lands straight after. The questions, the templates, and the exact image prompts, ready to fill in.</p>
@@ -87,8 +90,7 @@
     </form>
     <p class="free-note">Free · No payment required · One email, no spam</p>
   </div>
-
-  <p class="upsell-note">Want the full three-day mini-course — video for each day, plus Muse answering your specific questions as you go? That's <a href="/blueprint">Create Your AI Avatar Blueprint with Practice Coach — £15</a>.</p>
+  </div>
 </div>
 
 <footer>
