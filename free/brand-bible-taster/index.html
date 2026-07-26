@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Build a Brand Without Your Face (Free Workbook) | The Monifa Method</title>
-<meta name="description" content="No camera, no crew, no studio — just a free workbook to build who your avatar is, her visual range, and her first moving clips. No payment, no pressure.">
+<meta name="description" content="No camera, no crew, no studio — just a free workbook to build who your avatar is, their visual range, and their first moving clips. No payment, no pressure.">
 <meta property="og:title" content="Build a Brand Without Your Face (Free Workbook) | The Monifa Method">
-<meta property="og:description" content="No camera, no crew, no studio needed. The free workbook: who your avatar is, her visual range, and her first moving clips.">
+<meta property="og:description" content="No camera, no crew, no studio needed. The free workbook: who your avatar is, their visual range, and their first moving clips.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://themonifamethod.com/free/brand-bible-taster">
 <link rel="canonical" href="https://themonifamethod.com/free/brand-bible-taster">
@@ -47,7 +47,7 @@
   <div class="muse-header">
     <span class="muse-badge">Free · The Workbook</span>
     <h1>Build a brand nobody has to see your face on — the free workbook.</h1>
-    <p>No face, no camera crew, no studio needed — just who your avatar is, her visual range, and her first moving clips. The questions, the templates, the exact prompts. No payment, no pressure.</p>
+    <p>No face, no camera crew, no studio needed — just who your avatar is, their visual range, and their first moving clips. The questions, the templates, the exact prompts. No payment, no pressure.</p>
   </div>
 
   <div class="includes-strip">
@@ -96,15 +96,12 @@
     <p style="font-size:13px; color:var(--ink-muted); margin-top:14px; text-align:center;">One reference photo, two prompts, one consistent avatar — exactly the workflow Day 1 and Day 3 walk you through.</p>
   </div>
 
-  <!-- ============ EMAIL GATE ============ -->
+  <!-- ============ GET IT ON BEACONS ============ -->
   <div class="gate-band">
   <div id="gate-card" class="gate-card">
     <h2>Get the free workbook</h2>
-    <p>One email, then confirm your subscription — the PDF lands straight after. The questions, the templates, and the exact image prompts, ready to fill in.</p>
-    <form id="gate-form" class="gate-form" onsubmit="handleGate(event)">
-      <input type="email" id="taster-email" placeholder="your@email.com" required>
-      <button type="submit" class="cta">Send me the workbook →</button>
-    </form>
+    <p>One email, then the PDF lands straight in your inbox. The questions, the templates, and the exact image prompts, ready to fill in.</p>
+    <a href="https://monifamuse.com/shop/3DayBrandBibleTaster" class="cta" style="display:block;" target="_blank">Send me the workbook →</a>
     <p class="free-note">Free · No payment required · One email, no spam</p>
   </div>
   </div>
@@ -114,19 +111,5 @@
   <a href="/" style="text-decoration:none; color:var(--gold); font-size:12px; letter-spacing:2px; text-transform:uppercase;">&larr; The Monifa Method</a>
   <p style="margin-top:10px;">&copy; 2026 The Monifa Method. All rights reserved.</p>
 </footer>
-
-<script>
-function handleGate(e) {
-  e.preventDefault();
-  const email = document.getElementById('taster-email').value;
-  const formData = new FormData();
-  formData.append("email_address", email);
-  fetch(`https://app.kit.com/forms/9699865/subscriptions`, {
-    method: "POST", body: formData, mode: "no-cors"
-  }).catch(() => {}).finally(() => {
-    window.location.href = '/thank-you';
-  });
-}
-</script>
 </body>
 </html>
