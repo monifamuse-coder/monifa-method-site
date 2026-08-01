@@ -74,8 +74,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<style>
+  /* ===== VIBRANT OVERRIDE — cold-traffic energy ===== */
+  :root{ --gold-vibrant:#D9A62B; --terracotta:#C1502E; }
+  .cta{ background:var(--gold-vibrant) !important; border-color:var(--gold-vibrant) !important; color:#1C1C1C !important; box-shadow:0 6px 20px rgba(217,166,43,0.35); }
+  .cta:hover{ box-shadow:0 8px 26px rgba(217,166,43,0.5); }
+  .accent{ color:var(--gold-vibrant) !important; }
+  .eyebrow{ color:var(--terracotta) !important; }
+</style>
 </head>
 <body>
+
+<!-- ============ PROOF BANNER ============ -->
+<div style="background:var(--ink); color:var(--ink-light); text-align:center; padding:9px 16px; font-size:12.5px; font-family:Arial,sans-serif;">
+  🕊️ The persona delivering this message is 100% AI. <a href="/ask-muse" style="color:var(--gold); font-weight:600; text-decoration:none;">See the framework behind it →</a>
+</div>
 
 <!-- ============ NAV ============ -->
 <nav class="nav">

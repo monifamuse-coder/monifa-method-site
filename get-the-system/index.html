@@ -17,8 +17,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<style>
+  /* ===== VIBRANT OVERRIDE — cold-traffic energy, scoped to this page only ===== */
+  :root{ --gold-vibrant:#D9A62B; --terracotta:#C1502E; }
+  .cta{ background:var(--gold-vibrant) !important; border-color:var(--gold-vibrant) !important; color:#1C1C1C !important; box-shadow:0 6px 20px rgba(217,166,43,0.35); }
+  .cta:hover{ box-shadow:0 8px 26px rgba(217,166,43,0.5); }
+  .accent{ color:var(--gold-vibrant) !important; }
+  .eyebrow{ color:var(--terracotta) !important; }
+  #bonus-preview .lesson figcaption{ color:#FFFFFF !important; }
+  #bonus-preview .lesson figcaption .lp{ color:var(--gold-vibrant) !important; }
+  #bonus-preview .lesson figcaption em{ color:rgba(255,255,255,0.75) !important; }
+  #bonus-preview .chip-more{ color:rgba(255,255,255,0.75) !important; }
+</style>
 </head>
 <body>
+
+<!-- ============ PROOF BANNER ============ -->
+<div style="background:var(--ink); color:var(--ink-light); text-align:center; padding:9px 16px; font-size:12.5px; font-family:Arial,sans-serif;">
+  🕊️ The persona delivering this message is 100% AI. <a href="/ask-muse" style="color:var(--gold); font-weight:600; text-decoration:none;">See the framework behind it →</a>
+</div>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -35,6 +52,38 @@
       <a class="cta" href="https://monifamuse.com/shop/TheFacelessStudio" target="_blank" data-cta="hero">Get The Faceless Studio — £47</a>
     </div>
     <p class="micro">Instant access <span>·</span> Lifetime download <span>·</span> No subscription</p>
+  </div>
+</section>
+
+<!-- ============ THE CINEMATIC REGISTER — moved to top, proof before persuasion ============ -->
+<section class="section" id="bonus-preview" style="background:var(--terracotta); border-radius:0;">
+  <div class="wrap">
+    <p class="eyebrow" style="margin-bottom:18px; color:var(--gold-vibrant) !important;">See It Before You Read Anything Else</p>
+    <h2 class="section-title" style="color:#FFFFFF;">The same avatar. Three registers. Zero camera.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.85);">This is what £47 actually builds — not a promise, the thing itself.</p>
+
+    <div class="lesson-grid" id="bonus-lesson-grid">
+      <figure class="lesson">
+        <video controls preload="none" playsinline poster="/assets/bonus-cinematic-avatar.jpg">
+          <source src="/assets/bonus-cinematic-avatar.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="lp">Cinematic Bonus</span>The Avatar, In Character<em>The same face from every lesson — same voice, different register.</em></figcaption>
+      </figure>
+      <figure class="lesson">
+        <video controls preload="none" playsinline poster="/assets/asmr-packaging.jpg">
+          <source src="/assets/asmr-packaging.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="lp">Cinematic Bonus</span>Packaging, Unboxed<em>What the prompt library in Pillar 07 actually produces.</em></figcaption>
+      </figure>
+      <figure class="lesson">
+        <video controls preload="none" playsinline poster="/assets/results-speak.jpg">
+          <source src="/assets/results-speak.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="lp">Muse, Unscripted</span>Proof Over Performance<em>I stopped performing my work. I just let it work.</em></figcaption>
+      </figure>
+    </div>
+
+    <p class="chip-more" style="margin-top:26px;">The prompt library, the ready-made looks, and the automated DM pipeline all ship inside Pillar 07 — never a separate purchase.</p>
   </div>
 </section>
 
@@ -233,37 +282,6 @@
 </section>
 
 <!-- ============ THE BONUSES — CINEMATIC PREVIEW ============ -->
-<section class="section section-alt" id="bonus-preview">
-  <div class="wrap">
-    <p class="eyebrow" style="margin-bottom:18px;">Included, No Extra Charge</p>
-    <h2 class="section-title">The cinematic register — also part of the £47.</h2>
-    <p class="section-sub">The Toolkit doesn't stop at prompts on a page. Here's what the same avatar looks like the moment the register shifts from teaching to editorial.</p>
-
-    <div class="lesson-grid" id="bonus-lesson-grid">
-      <figure class="lesson">
-        <video controls preload="none" playsinline poster="/assets/bonus-cinematic-avatar.jpg">
-          <source src="/assets/bonus-cinematic-avatar.mp4" type="video/mp4">
-        </video>
-        <figcaption><span class="lp">Cinematic Bonus</span>The Avatar, In Character<em>The same face from every lesson — same voice, different register.</em></figcaption>
-      </figure>
-      <figure class="lesson">
-        <video controls preload="none" playsinline poster="/assets/asmr-packaging.jpg">
-          <source src="/assets/asmr-packaging.mp4" type="video/mp4">
-        </video>
-        <figcaption><span class="lp">Cinematic Bonus</span>Packaging, Unboxed<em>What the prompt library in Pillar 07 actually produces.</em></figcaption>
-      </figure>
-      <figure class="lesson">
-        <video controls preload="none" playsinline poster="/assets/results-speak.jpg">
-          <source src="/assets/results-speak.mp4" type="video/mp4">
-        </video>
-        <figcaption><span class="lp">Muse, Unscripted</span>Proof Over Performance<em>I stopped performing my work. I just let it work.</em></figcaption>
-      </figure>
-    </div>
-
-    <p class="chip-more" style="margin-top:26px;">The prompt library, the ready-made looks, and the automated DM pipeline all ship inside Pillar 07 — never a separate purchase.</p>
-  </div>
-</section>
-
 <!-- ============ WHAT IS ACTUALLY INSIDE ============ -->
 <section class="section" id="inventory">
   <div class="wrap">
@@ -405,7 +423,7 @@
       </div>
       <div class="objection">
         <p class="q">"Is Muse just a chatbot?"</p>
-        <p class="a">A chatbot answers questions. Muse asks them — about this business, specifically — and then produces the asset from the answers. She can be tested before anything's bought: five free questions, no account, no card.</p>
+        <p class="a"><strong>A chatbot answers questions.</strong> Muse asks them — about this business, specifically — and then produces the asset from the answers. She can be tested before anything's bought: five free questions, no account, no card.</p>
       </div>
       <div class="objection">
         <p class="q">"What if I don't know what I'm selling yet?"</p>
@@ -413,15 +431,15 @@
       </div>
       <div class="objection">
         <p class="q">"£47 for all this? What's the catch?"</p>
-        <p class="a">No catch — an avatar delivers this course instead of a studio and a crew, and that saving gets passed on rather than kept. What's inside doesn't shrink to match the price: seven pillars, a Practice Coach that actually answers your specific questions, real prompt libraries, and a finished asset at the end of most pillars. The accessible price is a choice, not a discount on something thinner.</p>
+        <p class="a"><strong>No catch — an avatar</strong> delivers this course instead of a studio and a crew, and that saving gets passed on rather than kept. What's inside doesn't shrink to match the price: seven pillars, a Practice Coach that actually answers your specific questions, real prompt libraries, and a finished asset at the end of most pillars. The accessible price is a choice, not a discount on something thinner.</p>
       </div>
       <div class="objection">
         <p class="q">"An AI teaches it? For that price?"</p>
-        <p class="a">Yes — and that is the point rather than the compromise. A human coach is gated to a calendar and a mood. Muse is available at 6am and at 11pm, which is when this work actually gets done. Every lesson is avatar-delivered, deliberately, because the course is teaching exactly the thing it is doing.</p>
+        <p class="a"><strong>Yes — and that is</strong> the point rather than the compromise. A human coach is gated to a calendar and a mood. Muse is available at 6am and at 11pm, which is when this work actually gets done. Every lesson is avatar-delivered, deliberately, because the course is teaching exactly the thing it is doing.</p>
       </div>
       <div class="objection">
         <p class="q">"And if it isn't for me?"</p>
-        <p class="a">Then it's refunded, within 7 days of purchase. No debate, no form, no attempt to talk anyone round. A happy customer is the job done; an unhappy one gets their money back.</p>
+        <p class="a"><strong>Then it's refunded,</strong> within 7 days of purchase. No debate, no form, no attempt to talk anyone round. A happy customer is the job done; an unhappy one gets their money back.</p>
       </div>
     </div>
   </div>
