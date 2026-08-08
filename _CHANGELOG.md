@@ -128,3 +128,34 @@ she generates and never ask for it again. The status line now reads
 "✓ Muse remembers The Clarity Company" rather than the generic phrasing.
 
 Tested in-browser: fill → save → status → injected context → persists on reopen.
+
+## Cinematic Studio retired; gender-neutral pronoun fix was incomplete
+
+**Cinematic Studio → Faceless Studio, settled, not ambiguous.** The standalone £47
+"Cinematic Studio — coming soon" upsell was retired mid-build. The line "Want the
+cinematic, luxury register? That's the Cinematic Studio — £47, coming soon" was
+removed from the live site and replaced with copy confirming the cinematic register
+ships free, inside the Faceless Studio, as the Cinematic Prompt Bible bonus (Pillar 07).
+There is no separate paid Cinematic Studio. Any document or chat referencing one is
+describing a retired plan, not current state.
+
+**The original gender-neutral pronoun fix only caught sentence-level phrasing, not
+section titles or body copy.** It searched for and replaced specific phrases like "her
+visual range" and "her first moving clips" in descriptive paragraphs — but the Day
+2/3 section titles themselves ("Building Her Visual Range," "Bringing Her to Life")
+didn't match that exact phrasing and were never touched. On inspection, the bug was
+larger than the two titles: the workbook PDF's actual body content — scene prompts,
+motion-clip descriptions, the closing "how she feels in motion" line — still used
+"her/she" for the generic avatar throughout, not just in the two headers.
+
+Fixed across every location the title appeared:
+- `blueprint/index.html` — Day 2/3 `gen-out` card titles
+- `free/brand-bible-taster/index.html` — includes-strip pill labels
+- `free/brand-bible-taster/delivered/index.html` — includes-strip pill labels
+- `assets/The-Blueprint-Workbook.pdf` — rebuilt from scratch (no source file existed
+  in this session); every "her/she" referring to the avatar changed to "your avatar" /
+  "it" / "they" as natural phrasing required, titles included. Verified clean via full
+  text extraction post-rebuild — zero gendered avatar references remain.
+
+New titles: "Building Your Avatar's Visual Range" / "Bringing Your Avatar to Life".
+
