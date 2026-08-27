@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/monifamuse-cv", "destination": "/biaafterdark", "permanent": true },
+    { "source": "/monifamuse-cv/(.*)", "destination": "/biaafterdark", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
