@@ -1,3 +1,16 @@
+# Changelog: Enteleia removed, BIA clips section (21 Oct 2026)
+
+- Enteleia deleted: `enteleia/` folder, `downloads/enteleia-architecture-of-attention.pdf`, sitemap entry. No other page referenced it.
+  Live pages are now MonifaMuse (the Academy) and BIA After Dark.
+- `biaafterdark/index.html`: new "A few seconds inside the room" section. Self-healing: hidden until at least one clip loads
+  from `biaafterdark/clips/clip-1.mp4` ... `clip-4.mp4`. Muted autoplay in view, "Sound on" toggle, respects reduced motion.
+- `biaafterdark/index.html`: fixed a sideways scroll on phones (the hero glow overhung the page edge).
+- `biaafterdark/clips/`: 3 live clips added (clip-1 Porta Fechada, clip-2 Golden Lamé, clip-3 This Is What I Wanted), re-encoded
+  720x1280 H.264 with audio, about 2 MB each, plus poster frames.
+- `biaafterdark/clips/README.txt`: filenames and the ffmpeg command to shrink clips.
+
+---
+
 # Changelog — BIA After Dark landing page (15 Oct 2026)
 
 - `biaafterdark/index.html` — REPLACED. The old link-in-bio page (Afro house / Amapiano copy, "the face behind it")
