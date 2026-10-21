@@ -5,6 +5,7 @@ Allow: /
 Disallow: /practice
 Disallow: /studio
 Disallow: /thank-you
+Disallow: /biaafterdark/welcome
 Disallow: /downloads/
 Disallow: /blueprint/day1
 Disallow: /blueprint/day2

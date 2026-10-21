@@ -1,3 +1,20 @@
+# Changelog — BIA After Dark landing page (15 Oct 2026)
+
+- `biaafterdark/index.html` — REPLACED. The old link-in-bio page (Afro house / Amapiano copy, "the face behind it")
+  is now a landing page with email signup, the three musical rooms, the story of Bia and the AI-persona disclosure.
+  Kept: GA tag, Instagram / TikTok / Spotify links, the three HyperFollow release links.
+  Standalone: does not load /styles.css, so the Academy palette stays separate.
+- `biaafterdark/welcome/index.html` — NEW, noindex. Kit success-redirect target.
+- `privacy/index.html` — free-resource line now also covers the BIA late list.
+- `robots.txt` — Disallow /biaafterdark/welcome. `sitemap.xml` — /biaafterdark priority 0.7 → 0.8.
+- `vercel.json` — unchanged (/monifamuse-cv still redirects to /biaafterdark).
+
+## Wired
+`KIT_FORM_ID` = 10050893, YouTube = youtube.com/@BIAAfterDark. Kit form: confirmation email on, redirect after
+confirming = /biaafterdark/welcome, "Download" = The_Velvet_Hour_BIA_After_Dark.pdf (upload in Kit).
+
+---
+
 # Changelog — repositioning + repricing
 
 ## The core decision
