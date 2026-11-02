@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /biaafterdark/welcome
+
+Sitemap: https://themonifamethod.com/sitemap.xml
