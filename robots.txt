@@ -1,15 +1,6 @@
 User-agent: *
 Allow: /
 
-# Private / post-purchase surfaces — kept out of the index deliberately.
-Disallow: /practice
-Disallow: /studio
-Disallow: /thank-you
 Disallow: /biaafterdark/welcome
-Disallow: /downloads/
-Disallow: /blueprint/day1
-Disallow: /blueprint/day2
-Disallow: /blueprint/day3
-Disallow: /free/brand-bible-taster/delivered
 
 Sitemap: https://themonifamethod.com/sitemap.xml

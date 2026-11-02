@@ -11,10 +11,10 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat with Muse — Free | The Monifa Method</title>
-<meta name="description" content="Chat with Muse, free — no account needed. Ask about your avatar, your brand, or anything inside the 7 pillars.">
-<meta property="og:title" content="Chat with Muse — Free, No Account Needed">
-<meta property="og:description" content="5 free questions. No account, no payment. Just ask.">
+<title>Ask Muse | The Monifa Method</title>
+<meta name="description" content="Ask Muse, an AI-generated guide to the Archive. Free, no account needed. Find the piece that fits what you are working through.">
+<meta property="og:title" content="Ask Muse | The Monifa Method">
+<meta property="og:description" content="An AI-generated guide to the Archive. Free, no account needed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://themonifamethod.com/ask-muse">
 <link rel="canonical" href="https://themonifamethod.com/ask-muse">
@@ -101,28 +101,28 @@
   <div class="muse-header">
     <div class="muse-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      AI Coach for Boundaries &amp; Self-Trust · No account needed
+      AI-generated guide to the Archive · No account needed
     </div>
     <h1>Ask Muse <span class="accent">anything</span></h1>
-    <p>Muse personalises every answer to your situation. Ask about a boundary you're afraid to set, a pattern you keep repeating, or what you need to hear right now.</p>
-    <p style="font-size:13px;color:var(--ink-muted);margin-top:10px;font-style:italic;">This is a free taster — 5 questions to properly show you what Muse can do.</p>
+    <p>Ask about a boundary you're afraid to set, a pattern you keep repeating, or which piece in the Archive might meet you where you are.</p>
+    <p style="font-size:13px;color:var(--ink-muted);margin-top:10px;font-style:italic;">Five free questions, no account, no pressure.</p>
   </div>
 
-  <!-- ============ MEET YOUR COACH ============ -->
+  <!-- ============ MEET MUSE ============ -->
   <div style="max-width:280px; margin:28px auto 32px; text-align:center;">
     <div style="border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(28,28,28,0.12);">
       <video controls preload="none" playsinline poster="/assets/why-men-love-bitches.jpg" style="width:100%; aspect-ratio:9/16; object-fit:cover; display:block; background:#000;">
         <source src="/assets/why-men-love-bitches.mp4" type="video/mp4">
       </video>
     </div>
-    <p style="font-size:12.5px; color:var(--ink-muted); margin-top:10px;">Meet Muse — the same voice you're about to talk to.</p>
+    <p style="font-size:12.5px; color:var(--ink-muted); margin-top:10px;">Meet Muse, an AI-generated persona, openly disclosed.</p>
   </div>
 
   <div class="chat-window">
     <div class="chat-messages" id="chat-messages">
       <div class="msg muse">
         <span class="msg-label">Muse</span>
-        <div class="msg-bubble">There's a version of you that already knows her worth — she's just been waiting for permission to stop shrinking. I'm here to help you find her.<br><br>Ask me anything — about a boundary you're afraid to set, a pattern you keep repeating, or what you need to hear right now.</div>
+        <div class="msg-bubble">I want you to hear this: you're allowed to take your time here.<br><br>Ask me about a boundary you're afraid to set, a pattern you keep repeating, or which piece in the Archive might fit where you are right now.</div>
       </div>
     </div>
 
@@ -148,7 +148,7 @@
     </div>
   </div>
 
-  <p class="muse-note">Muse is an AI coach built on the Monifa Method framework — not a human. She doesn't give financial or legal advice. Ready for the full system? <a href="/get-the-system">See all 7 pillars — £47</a></p>
+  <p class="muse-note">Muse is an AI-generated guide, not a human, and not a therapist. She doesn't give medical, legal or financial advice. If you are in danger, call 999. UK National Domestic Abuse Helpline: 0808 2000 247 (free, 24 hours). Samaritans: 116 123. <a href="/#archive">Explore the Archive</a></p>
 </div>
 
 <footer>
@@ -238,9 +238,9 @@ async function sendMessage() {
       const input = document.getElementById('chat-input');
       const sendBtn = document.getElementById('send-btn');
       input.disabled = true;
-      input.placeholder = "Free taster complete — see below";
+      input.placeholder = "Five questions complete — see below";
       sendBtn.disabled = true;
-      appendMsg('muse', "That's your 5 free questions — hope this gave you a real feel for how I can help. If you'd like to keep going with me, across every pillar, that's what's inside <a href='/get-the-system' style='color:var(--gold);font-weight:600;'>The Faceless Studio →</a>. £47, and I'm properly yours from there. Not ready yet? Grab the <a href='/free/brand-bible-taster' style='color:var(--gold);font-weight:600;'>free 3-day taster →</a> instead — no pressure at all. 💛");
+      appendMsg('muse', "That's your five free questions. Thank you for spending them here. Everything in <a href='/#archive' style='color:var(--gold);font-weight:600;'>the Archive →</a> is there whenever you want it. Come back anytime.");
     }
   } catch {
     removeTyping();

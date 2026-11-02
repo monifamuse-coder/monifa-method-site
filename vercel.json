@@ -1,7 +1,18 @@
 {
   "redirects": [
     { "source": "/monifamuse-cv", "destination": "/biaafterdark", "permanent": true },
-    { "source": "/monifamuse-cv/(.*)", "destination": "/biaafterdark", "permanent": true }
+    { "source": "/monifamuse-cv/(.*)", "destination": "/biaafterdark", "permanent": true },
+    { "source": "/get-the-system", "destination": "/", "permanent": true },
+    { "source": "/blueprint", "destination": "/", "permanent": true },
+    { "source": "/blueprint/(.*)", "destination": "/", "permanent": true },
+    { "source": "/free", "destination": "/", "permanent": true },
+    { "source": "/free/(.*)", "destination": "/", "permanent": true },
+    { "source": "/practice", "destination": "/", "permanent": true },
+    { "source": "/studio", "destination": "/", "permanent": true },
+    { "source": "/thank-you", "destination": "/", "permanent": true },
+    { "source": "/api/heygen-generate", "destination": "/", "permanent": true },
+    { "source": "/api/heygen-status", "destination": "/", "permanent": true },
+    { "source": "/api/generate-metadata", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
